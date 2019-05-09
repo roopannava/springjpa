@@ -1,0 +1,54 @@
+spring:
+  application.name: ansattservice
+
+  jpa:
+    database-platform: org.hibernate.dialect.Oracle10gDialect
+    hibernate:
+      ddl-auto: none
+      use-new-id-generator-mappings: true
+
+  datasource:
+    name: fellesdata
+    url: jdbc:oracle:thin:@fellest.usrv.ubergenkom.no:21524:FELLEST
+    username: ANSATTSERVICE
+    password: Tobouv3tornotBouv3t
+
+info:
+  application:
+    name: AnsattService
+    description: "AnsattService er en tjeneste hvor man kan hente ansattdata. Input er brukernavn, fødselsnr eller alternativid."
+
+---
+
+spring:
+  profiles: dev
+
+server:
+  port: 8042
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+---
+
+spring:
+  profiles: vagrant
+
+---
+
+spring:
+  profiles: test
+
+---
+
+spring:
+  profiles: production
+
+  datasource:
+    name: fellesdata
+    url: jdbc:oracle:thin:@oradb31i.srv.bergenkom.no:21521:felprod
+    username: ANSATTSERVICE
+    password: Borntobewild1337
