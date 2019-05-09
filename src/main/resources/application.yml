@@ -4,11 +4,11 @@ spring:
   jpa:
     hibernate:
       ddl-auto: create
-
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     name: weather
     url: jdbc:mysql://localhost:3306/weather
     username: testuser
     password: password
-
+server:
+  port: 8010
